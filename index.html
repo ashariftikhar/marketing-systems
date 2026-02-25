@@ -1,45 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Marketing Systems by Ashar Iftikhar — Funnel architecture, lead generation, and automation workflows. Real frameworks. Real results."/>
-  <meta name="keywords" content="funnel architecture, lead generation, marketing automation, digital marketing, ashar iftikhar, pakistan developer"/>
   <meta property="og:title" content="Marketing Systems — Ashar Iftikhar"/>
   <meta property="og:description" content="Structured digital marketing systems — funnel architecture, lead generation, automation."/>
   <meta property="og:url" content="https://ashariftikhar.github.io/marketing-systems/"/>
-  <meta property="og:type" content="website"/>
   <title>Marketing Systems — Ashar Iftikhar</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
 
   <style>
-    /* ════════════════════════════════════
-       RESET & ROOT
-    ════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ══════════════════════════════════════
+       THEME VARIABLES
+    ══════════════════════════════════════ */
     :root {
-      --bg:         #080c12;
-      --bg2:        #0d1117;
-      --bg3:        #111820;
-      --border:     #1e2733;
-      --border2:    #21262d;
-      --blue:       #58a6ff;
-      --blue-dim:   #1f6feb;
-      --white:      #f0f6fc;
-      --muted:      #7d8590;
-      --green:      #3fb950;
-      --warn:       #d29922;
-      --fh:         'Syne', sans-serif;
-      --fb:         'DM Sans', sans-serif;
-      --fm:         'JetBrains Mono', monospace;
-      --radius:     10px;
-      --transition: 0.22s ease;
+      --radius: 10px;
+      --transition: 0.2s ease;
+      --fh: 'Playfair Display', Georgia, serif;
+      --fb: 'Outfit', sans-serif;
+      --fm: 'Fira Code', monospace;
     }
 
+    [data-theme="dark"] {
+      --bg:        #09090b;
+      --bg2:       #111113;
+      --bg3:       #18181b;
+      --border:    #27272a;
+      --blue:      #60a5fa;
+      --blue-dim:  #3b82f6;
+      --white:     #fafafa;
+      --muted:     #71717a;
+      --muted2:    #52525b;
+      --green:     #4ade80;
+      --warn:      #fbbf24;
+      --nav-bg:    rgba(9,9,11,0.90);
+      --card-bg:   #111113;
+      --input-bg:  #09090b;
+      --shadow:    0 1px 3px rgba(0,0,0,0.4);
+      --glow:      rgba(96,165,250,0.08);
+    }
+
+    [data-theme="light"] {
+      --bg:        #fafafa;
+      --bg2:       #ffffff;
+      --bg3:       #f4f4f5;
+      --border:    #e4e4e7;
+      --blue:      #2563eb;
+      --blue-dim:  #1d4ed8;
+      --white:     #09090b;
+      --muted:     #71717a;
+      --muted2:    #a1a1aa;
+      --green:     #16a34a;
+      --warn:      #d97706;
+      --nav-bg:    rgba(250,250,250,0.92);
+      --card-bg:   #ffffff;
+      --input-bg:  #f4f4f5;
+      --shadow:    0 1px 3px rgba(0,0,0,0.08);
+      --glow:      rgba(37,99,235,0.06);
+    }
+
+    /* ══════════════════════════════════════
+       RESET
+    ══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
 
     body {
@@ -49,149 +76,149 @@
       font-weight: 300;
       line-height: 1.75;
       overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
       -webkit-font-smoothing: antialiased;
     }
 
-    img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-    /* Grain overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-    }
+    /* ══════════════════════════════════════
+       LAYOUT
+    ══════════════════════════════════════ */
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5.5rem 0; }
+    .alt { background: var(--bg2); }
 
-    /* ════════════════════════════════════
-       TYPOGRAPHY HELPERS
-    ════════════════════════════════════ */
+    /* ══════════════════════════════════════
+       TYPOGRAPHY
+    ══════════════════════════════════════ */
     .eyebrow {
       font-family: var(--fm);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--blue);
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
-    .eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--blue); flex-shrink: 0; }
+    .eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--blue); }
 
-    .section-title {
+    .sec-title {
       font-family: var(--fh);
-      font-size: clamp(1.9rem, 4.5vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.08;
-      margin-bottom: 0.75rem;
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.7rem;
     }
 
-    .section-sub {
+    .sec-sub {
       color: var(--muted);
-      font-size: 0.97rem;
-      max-width: 460px;
+      font-size: 0.95rem;
+      max-width: 440px;
       margin-bottom: 3.5rem;
       line-height: 1.8;
     }
 
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        BUTTONS
-    ════════════════════════════════════ */
+    ══════════════════════════════════════ */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.8rem 1.8rem;
+      padding: 0.72rem 1.6rem;
       border-radius: 6px;
       font-family: var(--fb);
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       font-weight: 500;
       cursor: pointer;
       transition: var(--transition);
       border: none;
-      text-decoration: none;
     }
-    .btn-primary { background: var(--blue); color: #000; }
-    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+    .btn-solid { background: var(--blue); color: #fff; }
+    .btn-solid:hover { background: var(--blue-dim); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
 
-    /* ════════════════════════════════════
-       LAYOUT
-    ════════════════════════════════════ */
-    .container {
-      width: 100%;
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    section { padding: 6rem 0; }
-
-    .alt-bg { background: var(--bg2); }
-
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        NAV
-    ════════════════════════════════════ */
+    ══════════════════════════════════════ */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(8,12,18,0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      inset: 0 0 auto 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      transition: background 0.35s ease;
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
-      padding: 0 2rem;
-      max-width: 1160px;
+      height: 62px;
+      max-width: 1120px;
       margin: 0 auto;
+      padding: 0 2rem;
     }
 
     .nav-logo {
       font-family: var(--fh);
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+      font-weight: 700;
       color: var(--white);
+      letter-spacing: -0.01em;
     }
     .nav-logo span { color: var(--blue); }
 
-    .nav-links {
+    .nav-center {
       display: flex;
-      align-items: center;
       gap: 2rem;
       list-style: none;
     }
-
-    .nav-links a {
+    .nav-center a {
       font-size: 0.8rem;
-      font-weight: 400;
       color: var(--muted);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      letter-spacing: 0.03em;
       transition: color var(--transition);
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-center a:hover { color: var(--white); }
 
-    .nav-cta {
-      background: var(--blue) !important;
-      color: #000 !important;
-      padding: 0.4rem 1.1rem;
-      border-radius: 5px;
-      font-weight: 500 !important;
-      letter-spacing: 0 !important;
-      text-transform: none !important;
+    .nav-right { display: flex; align-items: center; gap: 0.8rem; }
+
+    /* Theme toggle */
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: var(--transition);
+      flex-shrink: 0;
     }
+    .theme-toggle:hover { border-color: var(--blue); }
+
+    .nav-hire {
+      background: var(--blue);
+      color: #fff !important;
+      padding: 0.38rem 1rem;
+      border-radius: 5px;
+      font-size: 0.8rem !important;
+      font-weight: 500;
+      transition: background var(--transition) !important;
+    }
+    .nav-hire:hover { background: var(--blue-dim) !important; color: #fff !important; }
 
     /* Hamburger */
     .hamburger {
@@ -205,136 +232,142 @@
     }
     .hamburger span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
       background: var(--white);
       border-radius: 2px;
       transition: var(--transition);
     }
 
-    /* Mobile menu */
-    .mobile-menu {
+    .mob-menu {
       display: none;
       flex-direction: column;
-      gap: 0;
       background: var(--bg2);
       border-bottom: 1px solid var(--border);
-      padding: 0.5rem 0;
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      padding: 0.9rem 2rem;
-      font-size: 0.9rem;
+    .mob-menu.open { display: flex; }
+    .mob-menu a {
+      padding: 0.85rem 2rem;
+      font-size: 0.88rem;
       color: var(--muted);
       border-bottom: 1px solid var(--border);
       transition: color var(--transition);
     }
-    .mobile-menu a:hover { color: var(--white); }
-    .mobile-menu a.mob-cta {
-      color: var(--blue);
-      font-weight: 500;
-      border-bottom: none;
-    }
+    .mob-menu a:hover { color: var(--white); }
+    .mob-menu a:last-child { border-bottom: none; color: var(--blue); }
 
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        HERO
-    ════════════════════════════════════ */
+    ══════════════════════════════════════ */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 64px;
+      padding-top: 62px;
       position: relative;
       overflow: hidden;
     }
 
-    /* Glow orb */
+    /* Subtle glow */
     .hero::before {
       content: '';
       position: absolute;
-      top: 10%;
-      right: -5%;
-      width: min(600px, 60vw);
-      height: min(600px, 60vw);
-      background: radial-gradient(ellipse, rgba(31,111,235,0.10) 0%, transparent 68%);
+      top: 0; right: 0;
+      width: 55%;
+      height: 100%;
+      background: radial-gradient(ellipse at 70% 30%, var(--glow) 0%, transparent 65%);
       pointer-events: none;
     }
-    .hero::after { display: none; }
 
-    .hero-content { position: relative; z-index: 1; }
+    /* Decorative grid lines */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.25;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+    }
 
-    .hero-tag {
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(31,111,235,0.12);
-      border: 1px solid rgba(88,166,255,0.2);
+      border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 0.3rem 0.9rem;
+      padding: 0.28rem 0.9rem;
       font-family: var(--fm);
-      font-size: 0.7rem;
-      color: var(--blue);
+      font-size: 0.67rem;
+      color: var(--muted);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
+      background: var(--bg2);
     }
-    .hero-tag::before { content: '●'; font-size: 0.5rem; animation: blink 1.8s infinite; }
-
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    .hero-badge::before { content: '●'; color: var(--green); font-size: 0.45rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     .hero h1 {
       font-family: var(--fh);
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 800;
-      line-height: 1.0;
-      letter-spacing: -0.035em;
-      margin-bottom: 1.5rem;
-      max-width: 800px;
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.4rem;
+      max-width: 680px;
     }
 
-    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blue);
+    }
 
-    .hero-sub {
-      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    .hero-desc {
+      font-size: 1rem;
       color: var(--muted);
-      max-width: 500px;
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
+      max-width: 460px;
+      margin-bottom: 2.2rem;
+      line-height: 1.85;
     }
 
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
-    }
+    .hero-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
 
     .hero-stats {
       display: flex;
-      gap: clamp(1.5rem, 4vw, 3.5rem);
+      gap: clamp(1.5rem, 4vw, 3rem);
       flex-wrap: wrap;
       padding-top: 2.5rem;
       border-top: 1px solid var(--border);
     }
 
-    .stat { display: flex; flex-direction: column; }
-
     .stat-n {
       font-family: var(--fh);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
       color: var(--white);
     }
-    .stat-n span { color: var(--blue); }
-    .stat-l { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.1rem; }
+    .stat-n em { font-style: normal; color: var(--blue); }
+    .stat-l {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.1rem;
+    }
 
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        CASE STUDIES
-    ════════════════════════════════════ */
+    ══════════════════════════════════════ */
     .case-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
@@ -343,698 +376,591 @@
     }
 
     .case-card {
-      background: var(--bg2);
-      padding: clamp(1.5rem, 3vw, 2.5rem);
-      transition: background var(--transition);
+      background: var(--card-bg);
+      padding: clamp(1.4rem, 2.5vw, 2.2rem);
       display: flex;
       flex-direction: column;
+      transition: background var(--transition);
     }
     .case-card:hover { background: var(--bg3); }
 
-    .case-ind {
+    .case-tag {
       font-family: var(--fm);
-      font-size: 0.67rem;
+      font-size: 0.64rem;
       color: var(--blue);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .case-title {
       font-family: var(--fh);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.015em;
       line-height: 1.3;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.7rem;
     }
 
     .case-desc {
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       color: var(--muted);
       line-height: 1.75;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.6rem;
       flex: 1;
     }
 
-    .case-results {
+    .case-nums {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.3rem;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
 
-    .res-n {
+    .case-num-val {
       font-family: var(--fh);
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
       color: var(--green);
     }
-    .res-l { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.1rem; }
-
-    .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .tag {
-      font-family: var(--fm);
-      font-size: 0.67rem;
+    .case-num-l {
+      font-size: 0.66rem;
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.1rem;
+    }
+
+    .chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .chip {
+      font-family: var(--fm);
+      font-size: 0.64rem;
+      color: var(--muted2);
       border: 1px solid var(--border);
-      padding: 0.18rem 0.55rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 4px;
     }
 
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        SYSTEMS GRID
-    ════════════════════════════════════ */
-    .systems-grid {
+    ══════════════════════════════════════ */
+    .sys-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
     }
 
     .sys-card {
-      background: var(--bg2);
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: clamp(1.4rem, 2.5vw, 2rem);
-      transition: border-color var(--transition), transform var(--transition);
+      padding: 1.8rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
     }
-    .sys-card:hover { border-color: var(--blue-dim); transform: translateY(-3px); }
-
-    .sys-icon { font-size: 1.5rem; margin-bottom: 0.9rem; }
-
-    .sys-name {
-      font-family: var(--fh);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: -0.015em;
-      margin-bottom: 0.5rem;
+    .sys-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px var(--glow);
     }
 
-    .sys-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.1rem; }
-
+    .sys-icon { font-size: 1.4rem; margin-bottom: 0.85rem; }
+    .sys-name { font-family: var(--fh); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    .sys-desc { font-size: 0.81rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
     .sys-link {
       font-family: var(--fm);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--blue);
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
       transition: gap var(--transition);
     }
-    .sys-link:hover { gap: 0.6rem; }
+    .sys-link:hover { gap: 0.55rem; }
 
-    /* ════════════════════════════════════
-       FUNNEL SECTION
-    ════════════════════════════════════ */
+    /* ══════════════════════════════════════
+       FUNNEL
+    ══════════════════════════════════════ */
     .funnel-wrap {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 1fr;
       gap: clamp(2rem, 5vw, 4rem);
       align-items: start;
     }
 
-    .funnel-stages { display: flex; flex-direction: column; }
+    .f-stages { display: flex; flex-direction: column; }
 
     .f-stage {
       display: flex;
-      gap: 1.2rem;
-      padding: 1.5rem;
+      gap: 1.1rem;
+      padding: 1.4rem 1.5rem;
       border: 1px solid var(--border);
       border-bottom: none;
-      background: var(--bg);
+      background: var(--card-bg);
       transition: background var(--transition);
     }
     .f-stage:first-child { border-radius: var(--radius) var(--radius) 0 0; }
     .f-stage:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); }
     .f-stage:hover { background: var(--bg3); }
 
-    .f-num {
-      font-family: var(--fm);
-      font-size: 0.68rem;
-      color: var(--blue);
-      min-width: 20px;
-      padding-top: 0.2rem;
-      flex-shrink: 0;
-    }
+    .f-num { font-family: var(--fm); font-size: 0.64rem; color: var(--blue); min-width: 18px; padding-top: 0.2rem; flex-shrink: 0; }
+    .f-name { font-family: var(--fh); font-size: 0.93rem; font-weight: 700; margin-bottom: 0.25rem; letter-spacing: -0.01em; }
+    .f-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
 
-    .f-name {
-      font-family: var(--fh);
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      letter-spacing: -0.01em;
-    }
+    .f-metrics { display: flex; flex-direction: column; gap: 0.8rem; }
 
-    .f-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-
-    .funnel-metrics { display: flex; flex-direction: column; gap: 0.9rem; }
-
-    .metric {
-      background: var(--bg);
+    .f-metric {
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.3rem 1.5rem;
+      padding: 1.2rem 1.4rem;
+      transition: border-color var(--transition);
     }
+    .f-metric:hover { border-color: var(--blue); }
 
-    .metric-l {
-      font-family: var(--fm);
-      font-size: 0.67rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.35rem;
-    }
+    .f-metric-l { font-family: var(--fm); font-size: 0.64rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .f-metric-v { font-family: var(--fh); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.04em; }
+    .f-metric-v.g { color: var(--green); }
+    .f-metric-v.b { color: var(--blue); }
+    .f-metric-v.w { color: var(--warn); }
+    .f-metric-s { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
 
-    .metric-v {
-      font-family: var(--fh);
-      font-size: 1.7rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-    }
-    .metric-v.g { color: var(--green); }
-    .metric-v.b { color: var(--blue); }
-    .metric-v.w { color: var(--warn); }
-    .metric-s { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
-
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        AUTOMATION FLOW
-    ════════════════════════════════════ */
-    .flow { display: flex; flex-direction: column; max-width: 640px; }
+    ══════════════════════════════════════ */
+    .flow { display: flex; flex-direction: column; max-width: 620px; }
 
     .flow-step {
       display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 1.3rem;
+      grid-template-columns: 42px 1fr;
+      gap: 1.2rem;
       position: relative;
     }
 
-    .flow-step:not(:last-child) .flow-line {
+    .flow-line {
       position: absolute;
-      left: 21px;
-      top: 44px;
+      left: 20px;
+      top: 42px;
       bottom: -16px;
       width: 1px;
       background: var(--border);
     }
 
     .flow-dot {
-      width: 44px;
-      height: 44px;
-      background: var(--bg2);
+      width: 42px;
+      height: 42px;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.95rem;
       flex-shrink: 0;
     }
 
-    .flow-body { padding-bottom: 2.2rem; }
-
-    .flow-title {
-      font-family: var(--fh);
-      font-size: 0.97rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      letter-spacing: -0.01em;
-    }
-
-    .flow-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
-
+    .flow-body { padding-bottom: 2rem; }
+    .flow-title { font-family: var(--fh); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+    .flow-desc { font-size: 0.81rem; color: var(--muted); line-height: 1.7; }
     .flow-tool {
       display: inline-block;
       font-family: var(--fm);
-      font-size: 0.66rem;
+      font-size: 0.63rem;
       color: var(--blue);
-      border: 1px solid rgba(88,166,255,0.22);
-      padding: 0.13rem 0.48rem;
+      border: 1px solid rgba(96,165,250,0.2);
+      padding: 0.12rem 0.45rem;
       border-radius: 4px;
-      margin-top: 0.55rem;
+      margin-top: 0.5rem;
     }
 
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        CHECKLIST
-    ════════════════════════════════════ */
+    ══════════════════════════════════════ */
     .check-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem;
     }
 
     .check-group {
-      background: var(--bg);
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.6rem;
+      padding: 1.5rem;
     }
 
     .check-group-title {
       font-family: var(--fh);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: -0.01em;
-      margin-bottom: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
-    .check-items { display: flex; flex-direction: column; gap: 0.65rem; }
+    .check-items { display: flex; flex-direction: column; gap: 0.6rem; }
 
     .check-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.7rem;
-      font-size: 0.82rem;
+      gap: 0.65rem;
+      font-size: 0.8rem;
       color: var(--muted);
       line-height: 1.5;
     }
 
     .check-box {
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       border: 1px solid var(--border);
       border-radius: 3px;
-      background: var(--bg2);
+      background: var(--bg);
       flex-shrink: 0;
       margin-top: 2px;
     }
 
-    /* ════════════════════════════════════
-       CONTACT SECTION
-    ════════════════════════════════════ */
-    #contact { background: var(--bg); }
-
+    /* ══════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════ */
     .contact-wrap {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
+      grid-template-columns: 1fr 1.3fr;
       gap: clamp(2.5rem, 6vw, 5rem);
       align-items: start;
     }
 
-    .contact-info h2 {
+    .contact-tagline {
       font-family: var(--fh);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
       margin-bottom: 1rem;
     }
+    .contact-tagline em { font-style: italic; color: var(--blue); }
 
-    .contact-info h2 em { font-style: normal; color: var(--blue); }
+    .contact-p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
 
-    .contact-info p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
+    .contact-meta { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; }
 
-    .contact-details { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
-
-    .contact-detail {
+    .meta-row {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
-      font-size: 0.87rem;
+      gap: 0.8rem;
+      font-size: 0.84rem;
       color: var(--muted);
     }
 
-    .contact-detail-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--bg2);
+    .meta-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--bg3);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       flex-shrink: 0;
     }
 
-    .contact-detail a { color: var(--blue); transition: opacity var(--transition); }
-    .contact-detail a:hover { opacity: 0.75; }
+    .meta-row a { color: var(--blue); }
+    .meta-row a:hover { text-decoration: underline; }
 
-    .social-row { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    .social-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
 
     .social-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: var(--bg2);
+      background: var(--bg3);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 0.45rem 0.9rem;
-      font-size: 0.8rem;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.78rem;
       color: var(--muted);
       transition: border-color var(--transition), color var(--transition);
     }
-    .social-btn:hover { border-color: var(--blue); color: var(--white); }
+    .social-btn:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* Form */
-    .contact-form-wrap {
-      background: var(--bg2);
+    /* Form card */
+    .form-card {
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: clamp(1.5rem, 3vw, 2.5rem);
+      padding: clamp(1.5rem, 3vw, 2.4rem);
+      box-shadow: var(--shadow);
     }
 
-    .form-title {
-      font-family: var(--fh);
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.3rem;
-    }
+    .form-head { font-family: var(--fh); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 0.25rem; }
+    .form-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.6rem; line-height: 1.6; }
 
-    .form-sub {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
-    }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.9rem; }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-
-    .form-group label {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
+    .form-group label { font-size: 0.76rem; font-weight: 500; color: var(--muted); letter-spacing: 0.03em; }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
-      background: var(--bg);
+      background: var(--input-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 0.7rem 0.9rem;
+      padding: 0.65rem 0.85rem;
       font-family: var(--fb);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--white);
       outline: none;
       transition: border-color var(--transition);
       width: 100%;
       resize: none;
     }
-
     .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--muted); opacity: 0.6; }
-
+    .form-group textarea::placeholder { color: var(--muted2); }
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus { border-color: var(--blue); }
-
     .form-group select option { background: var(--bg2); color: var(--white); }
 
     .form-submit {
       width: 100%;
-      padding: 0.85rem;
+      padding: 0.82rem;
       background: var(--blue);
-      color: #000;
+      color: #fff;
       font-family: var(--fb);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: opacity var(--transition), transform var(--transition);
-      margin-top: 0.5rem;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 0.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
     }
-    .form-submit:hover { opacity: 0.85; transform: translateY(-1px); }
-    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-    /* Success message */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-    }
-    .form-success.show { display: block; }
-    .form-success .success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .form-success h3 {
-      font-family: var(--fh);
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .form-success p { font-size: 0.85rem; color: var(--muted); }
+    .form-submit:hover { background: var(--blue-dim); transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
     .honeypot { display: none !important; }
 
-    /* ════════════════════════════════════
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .form-success.show { display: block; }
+    .form-success .s-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .form-success h3 { font-family: var(--fh); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.83rem; color: var(--muted); }
+
+    /* ══════════════════════════════════════
        FOOTER
-    ════════════════════════════════════ */
+    ══════════════════════════════════════ */
     footer {
       background: var(--bg2);
       border-top: 1px solid var(--border);
       padding: 2rem 0;
     }
-
     .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.78rem;
+      gap: 0.8rem;
+      font-size: 0.77rem;
       color: var(--muted);
     }
+    .footer-inner a { color: var(--blue); }
+    .footer-inner a:hover { text-decoration: underline; }
 
-    .footer-inner a { color: var(--blue); transition: opacity var(--transition); }
-    .footer-inner a:hover { opacity: 0.75; }
-
-    /* ════════════════════════════════════
-       ANIMATIONS
-    ════════════════════════════════════ */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ══════════════════════════════════════
+       SCROLL ANIMATIONS
+    ══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    .hero-tag     { animation: fadeUp 0.6s ease 0.1s both; }
-    .hero h1      { animation: fadeUp 0.6s ease 0.2s both; }
-    .hero-sub     { animation: fadeUp 0.6s ease 0.3s both; }
-    .hero-btns    { animation: fadeUp 0.6s ease 0.4s both; }
-    .hero-stats   { animation: fadeUp 0.6s ease 0.5s both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .hero-badge  { animation: fadeUp 0.5s ease 0.1s both; }
+    .hero h1     { animation: fadeUp 0.5s ease 0.2s both; }
+    .hero-desc   { animation: fadeUp 0.5s ease 0.3s both; }
+    .hero-btns   { animation: fadeUp 0.5s ease 0.4s both; }
+    .hero-stats  { animation: fadeUp 0.5s ease 0.5s both; }
 
-    /* ════════════════════════════════════
+    /* ══════════════════════════════════════
        RESPONSIVE
-    ════════════════════════════════════ */
-    @media (max-width: 900px) {
+    ══════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .case-grid { grid-template-columns: 1fr; }
       .funnel-wrap { grid-template-columns: 1fr; }
       .contact-wrap { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
+      .nav-center { display: none; }
       .hamburger { display: flex; }
       section { padding: 4rem 0; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
+      .form-row-2 { grid-template-columns: 1fr; }
       .container { padding: 0 1.25rem; }
+      .hero-stats { gap: 1.5rem; }
     }
 
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2.4rem; }
-      .case-grid { grid-template-columns: 1fr; }
+    @media (max-width: 520px) {
+      .sys-grid { grid-template-columns: 1fr; }
       .check-grid { grid-template-columns: 1fr; }
-      .systems-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      NAV
-══════════════════════════════════════ -->
+══════════════════════ -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">ASHAR<span>.</span>SYS</a>
-    <ul class="nav-links">
+    <a href="#" class="nav-logo">Ashar<span>.</span>Sys</a>
+    <ul class="nav-center">
       <li><a href="#case-studies">Case Studies</a></li>
       <li><a href="#systems">Systems</a></li>
       <li><a href="#funnel">Funnel</a></li>
       <li><a href="#automation">Automation</a></li>
       <li><a href="#checklist">Audit</a></li>
-      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
     </ul>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <a href="#contact" class="nav-center nav-hire" style="list-style:none;display:inline-block;">Hire Me</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mob-menu" id="mobMenu">
     <a href="#case-studies" onclick="closeMenu()">Case Studies</a>
     <a href="#systems" onclick="closeMenu()">Systems</a>
     <a href="#funnel" onclick="closeMenu()">Funnel</a>
     <a href="#automation" onclick="closeMenu()">Automation</a>
     <a href="#checklist" onclick="closeMenu()">Audit</a>
-    <a href="#contact" class="mob-cta" onclick="closeMenu()">→ Hire Me</a>
+    <a href="#contact" onclick="closeMenu()">→ Hire Me</a>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      HERO
-══════════════════════════════════════ -->
+══════════════════════ -->
 <section class="hero">
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-tag">Marketing Systems · Open Source Playbook</div>
-      <h1>Marketing that<br/>works while<br/><em>you sleep.</em></h1>
-      <p class="hero-sub">Funnel architecture, lead generation systems, and automation workflows — built by Ashar Iftikhar. Real frameworks. Real results.</p>
+    <div class="hero-inner">
+      <div class="hero-badge">Marketing Systems · Open Source Playbook</div>
+      <h1>Marketing that works<br/>while <em>you sleep.</em></h1>
+      <p class="hero-desc">Funnel architecture, lead generation systems, and automation workflows — built by Ashar Iftikhar. Real frameworks. Real results.</p>
       <div class="hero-btns">
-        <a href="#case-studies" class="btn btn-primary">↓ View Case Studies</a>
-        <a href="https://github.com/ashariftikhar/marketing-systems" target="_blank" class="btn btn-outline">GitHub Repo →</a>
+        <a href="#case-studies" class="btn btn-solid">View Case Studies ↓</a>
+        <a href="https://github.com/ashariftikhar/marketing-systems" target="_blank" class="btn btn-ghost">GitHub Repo →</a>
       </div>
       <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-n">5<span>+</span></span>
-          <span class="stat-l">System Frameworks</span>
+        <div>
+          <div class="stat-n">5<em>+</em></div>
+          <div class="stat-l">Frameworks</div>
         </div>
-        <div class="stat">
-          <span class="stat-n">3<span>×</span></span>
-          <span class="stat-l">Avg. Lead Growth</span>
+        <div>
+          <div class="stat-n">3<em>×</em></div>
+          <div class="stat-l">Avg. Lead Growth</div>
         </div>
-        <div class="stat">
-          <span class="stat-n">&lt;2s</span>
-          <span class="stat-l">Page Load Target</span>
+        <div>
+          <div class="stat-n">&lt;2s</div>
+          <div class="stat-l">Load Time Target</div>
         </div>
-        <div class="stat">
-          <span class="stat-n">0</span>
-          <span class="stat-l">Manual Follow-ups</span>
+        <div>
+          <div class="stat-n">0</div>
+          <div class="stat-l">Manual Follow-ups</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      CASE STUDIES
-══════════════════════════════════════ -->
-<section id="case-studies" class="alt-bg">
+══════════════════════ -->
+<section id="case-studies" class="alt reveal">
   <div class="container">
     <div class="eyebrow">Case Studies</div>
-    <h2 class="section-title">Results, not promises.</h2>
-    <p class="section-sub">Realistic engagements showing what a properly architected marketing system actually delivers.</p>
+    <h2 class="sec-title">Results, not promises.</h2>
+    <p class="sec-sub">Realistic engagements showing what a properly architected marketing system delivers.</p>
 
     <div class="case-grid">
-
       <div class="case-card">
-        <div class="case-ind">Local Service · Law Firm · Islamabad</div>
-        <div class="case-title">Law Firm Goes From 0 Leads Online to 18/Month</div>
-        <p class="case-desc">A firm with a broken 2019 website and zero digital presence. Rebuilt on Next.js, added a free consultation funnel, automated follow-up via n8n, and ran targeted LinkedIn outreach.</p>
-        <div class="case-results">
-          <div>
-            <div class="res-n">18</div>
-            <div class="res-l">Leads / Month</div>
-          </div>
-          <div>
-            <div class="res-n">0.9s</div>
-            <div class="res-l">Load Time</div>
-          </div>
-          <div>
-            <div class="res-n">34%</div>
-            <div class="res-l">Conv. Rate</div>
-          </div>
+        <div class="case-tag">Legal · Local Business · Islamabad</div>
+        <div class="case-title">Law Firm: 0 to 18 Leads Per Month</div>
+        <p class="case-desc">A firm with a broken 2019 website and no digital presence. Rebuilt on Next.js, added a free consultation funnel, automated follow-up, and targeted LinkedIn outreach.</p>
+        <div class="case-nums">
+          <div><div class="case-num-val">18</div><div class="case-num-l">Leads / Month</div></div>
+          <div><div class="case-num-val">0.9s</div><div class="case-num-l">Load Time</div></div>
+          <div><div class="case-num-val">34%</div><div class="case-num-l">Conv. Rate</div></div>
         </div>
-        <div class="tags">
-          <span class="tag">Next.js</span>
-          <span class="tag">n8n</span>
-          <span class="tag">Calendly</span>
-          <span class="tag">LinkedIn</span>
+        <div class="chips">
+          <span class="chip">Next.js</span><span class="chip">n8n</span><span class="chip">Calendly</span><span class="chip">LinkedIn</span>
         </div>
       </div>
 
       <div class="case-card">
-        <div class="case-ind">E-commerce · Fashion Brand</div>
-        <div class="case-title">Abandoned Cart Recovery — 22% Revenue Recovered</div>
-        <p class="case-desc">An online brand losing 73% of carts with no recovery system. Built an automated 3-email sequence triggered by abandonment, with a timed discount unlock at email 3.</p>
-        <div class="case-results">
-          <div>
-            <div class="res-n">22%</div>
-            <div class="res-l">Cart Recovery</div>
-          </div>
-          <div>
-            <div class="res-n">3×</div>
-            <div class="res-l">Open Rate</div>
-          </div>
-          <div>
-            <div class="res-n">0 hrs</div>
-            <div class="res-l">Manual Work</div>
-          </div>
+        <div class="case-tag">E-commerce · Fashion Brand</div>
+        <div class="case-title">Cart Recovery System — 22% Revenue Reclaimed</div>
+        <p class="case-desc">A brand losing 73% of carts with no recovery system. Built a 3-email automated sequence triggered by abandonment with a timed discount at email 3.</p>
+        <div class="case-nums">
+          <div><div class="case-num-val">22%</div><div class="case-num-l">Recovery Rate</div></div>
+          <div><div class="case-num-val">3×</div><div class="case-num-l">Open Rate</div></div>
+          <div><div class="case-num-val">0 hrs</div><div class="case-num-l">Manual Work</div></div>
         </div>
-        <div class="tags">
-          <span class="tag">n8n</span>
-          <span class="tag">ConvertKit</span>
-          <span class="tag">Shopify</span>
-          <span class="tag">Meta Pixel</span>
+        <div class="chips">
+          <span class="chip">n8n</span><span class="chip">ConvertKit</span><span class="chip">Shopify</span><span class="chip">Meta Pixel</span>
         </div>
       </div>
 
       <div class="case-card">
-        <div class="case-ind">SaaS · Digital Product</div>
-        <div class="case-title">Content → Lead Loop: 400 Signups in 60 Days</div>
-        <p class="case-desc">A bootstrapped SaaS with zero marketing budget. Built SEO content targeting long-tail keywords, gated a free template behind an opt-in, and automated the full onboarding sequence.</p>
-        <div class="case-results">
-          <div>
-            <div class="res-n">400</div>
-            <div class="res-l">Signups</div>
-          </div>
-          <div>
-            <div class="res-n">8.4k</div>
-            <div class="res-l">Organic Visits</div>
-          </div>
-          <div>
-            <div class="res-n">28%</div>
-            <div class="res-l">Trial Conv.</div>
-          </div>
+        <div class="case-tag">SaaS · Digital Product</div>
+        <div class="case-title">Content Loop: 400 Signups in 60 Days</div>
+        <p class="case-desc">A bootstrapped SaaS with zero budget. SEO content strategy, gated lead magnet, and automated onboarding turned organic traffic into paying users.</p>
+        <div class="case-nums">
+          <div><div class="case-num-val">400</div><div class="case-num-l">Signups</div></div>
+          <div><div class="case-num-val">8.4k</div><div class="case-num-l">Organic Visits</div></div>
+          <div><div class="case-num-val">28%</div><div class="case-num-l">Trial Conv.</div></div>
         </div>
-        <div class="tags">
-          <span class="tag">SEO</span>
-          <span class="tag">Mailchimp</span>
-          <span class="tag">GA4</span>
-          <span class="tag">Lead Magnet</span>
+        <div class="chips">
+          <span class="chip">SEO</span><span class="chip">Mailchimp</span><span class="chip">GA4</span><span class="chip">Lead Magnet</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      SYSTEMS
-══════════════════════════════════════ -->
-<section id="systems">
+══════════════════════ -->
+<section id="systems" class="reveal">
   <div class="container">
     <div class="eyebrow">Frameworks</div>
-    <h2 class="section-title">The systems library.</h2>
-    <p class="section-sub">Every framework documented in the repo — ready to adapt and deploy for your business.</p>
+    <h2 class="sec-title">The systems library.</h2>
+    <p class="sec-sub">Every framework documented in the repo — ready to adapt and deploy.</p>
 
-    <div class="systems-grid">
+    <div class="sys-grid">
       <div class="sys-card">
         <div class="sys-icon">🔻</div>
         <div class="sys-name">4-Stage Funnel Architecture</div>
-        <p class="sys-desc">Map every touchpoint from cold traffic to paid client — with conversion targets at each stage.</p>
+        <p class="sys-desc">Map every touchpoint from cold traffic to paid client with conversion targets at each stage.</p>
         <a href="https://github.com/ashariftikhar/marketing-systems/blob/main/funnel-templates/" class="sys-link" target="_blank">View Framework →</a>
       </div>
       <div class="sys-card">
         <div class="sys-icon">🎯</div>
         <div class="sys-name">Free Audit Lead Magnet</div>
-        <p class="sys-desc">The highest-converting B2B lead gen system — deliver value upfront, capture qualified leads, automate follow-up.</p>
+        <p class="sys-desc">Highest-converting B2B lead gen system — deliver value upfront, capture qualified leads, automate follow-up.</p>
         <a href="https://github.com/ashariftikhar/marketing-systems/blob/main/lead-gen-frameworks/" class="sys-link" target="_blank">View Framework →</a>
       </div>
       <div class="sys-card">
@@ -1052,190 +978,131 @@
       <div class="sys-card">
         <div class="sys-icon">📧</div>
         <div class="sys-name">Email Sequence Templates</div>
-        <p class="sys-desc">5-email nurture sequences for lead magnets, onboarding, abandoned cart, and re-engagement — annotated and copy-ready.</p>
+        <p class="sys-desc">5-email nurture sequences for lead magnets, onboarding, cart recovery, and re-engagement — copy-ready.</p>
         <a href="https://github.com/ashariftikhar/marketing-systems/blob/main/lead-gen-frameworks/" class="sys-link" target="_blank">View Templates →</a>
       </div>
       <div class="sys-card">
         <div class="sys-icon">📈</div>
         <div class="sys-name">Referral Engine Framework</div>
-        <p class="sys-desc">Turn satisfied clients into your best lead source — with incentives, automation, and tracking built in from day one.</p>
+        <p class="sys-desc">Turn satisfied clients into your best lead source — with incentives, automation, and tracking built in.</p>
         <a href="https://github.com/ashariftikhar/marketing-systems/blob/main/lead-gen-frameworks/" class="sys-link" target="_blank">View Framework →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      FUNNEL
-══════════════════════════════════════ -->
-<section id="funnel" class="alt-bg">
+══════════════════════ -->
+<section id="funnel" class="alt reveal">
   <div class="container">
     <div class="eyebrow">Funnel Architecture</div>
-    <h2 class="section-title">How the funnel works.</h2>
-    <p class="section-sub">Every stage has a purpose, a metric, and an exit condition.</p>
+    <h2 class="sec-title">How the funnel works.</h2>
+    <p class="sec-sub">Every stage has a purpose, a metric, and an exit condition.</p>
 
     <div class="funnel-wrap">
-      <div class="funnel-stages">
+      <div class="f-stages">
         <div class="f-stage">
           <span class="f-num">01</span>
-          <div>
-            <div class="f-name">Awareness</div>
-            <p class="f-desc">Cold audience discovers the brand via SEO, paid ads, or social. One message, one audience, one CTA.</p>
-          </div>
+          <div><div class="f-name">Awareness</div><p class="f-desc">Cold audience discovers the brand via SEO, paid ads, or social. One message, one audience, one CTA.</p></div>
         </div>
         <div class="f-stage">
           <span class="f-num">02</span>
-          <div>
-            <div class="f-name">Interest & Capture</div>
-            <p class="f-desc">Visitor exchanges contact info for a lead magnet that solves a real problem immediately. Generic PDFs don't work.</p>
-          </div>
+          <div><div class="f-name">Interest & Capture</div><p class="f-desc">Visitor exchanges contact info for a lead magnet that solves a real problem immediately.</p></div>
         </div>
         <div class="f-stage">
           <span class="f-num">03</span>
-          <div>
-            <div class="f-name">Nurture & Trust</div>
-            <p class="f-desc">Automated email sequence delivers value, handles objections, and builds credibility with case studies and social proof.</p>
-          </div>
+          <div><div class="f-name">Nurture & Trust</div><p class="f-desc">Automated email sequence delivers value and builds credibility with case studies and social proof.</p></div>
         </div>
         <div class="f-stage">
           <span class="f-num">04</span>
-          <div>
-            <div class="f-name">Decision & Action</div>
-            <p class="f-desc">High-converting landing page + frictionless CTA. Automated follow-up fires within minutes. First responder wins.</p>
-          </div>
+          <div><div class="f-name">Decision & Action</div><p class="f-desc">High-converting landing page + frictionless CTA. Automated follow-up fires in minutes. First responder wins.</p></div>
         </div>
       </div>
 
-      <div class="funnel-metrics">
-        <div class="metric">
-          <div class="metric-l">Page Conversion Rate Target</div>
-          <div class="metric-v g">15–30%</div>
-          <div class="metric-s">Lead magnet opt-in page benchmark</div>
+      <div class="f-metrics">
+        <div class="f-metric">
+          <div class="f-metric-l">Page Conversion Rate</div>
+          <div class="f-metric-v g">15–30%</div>
+          <div class="f-metric-s">Lead magnet opt-in benchmark</div>
         </div>
-        <div class="metric">
-          <div class="metric-l">Email Open Rate Target</div>
-          <div class="metric-v b">40–55%</div>
-          <div class="metric-s">Nurture sequence on a segmented list</div>
+        <div class="f-metric">
+          <div class="f-metric-l">Email Open Rate</div>
+          <div class="f-metric-v b">40–55%</div>
+          <div class="f-metric-s">Nurture sequence, segmented list</div>
         </div>
-        <div class="metric">
-          <div class="metric-l">Follow-up Response Time</div>
-          <div class="metric-v w">&lt; 5 min</div>
-          <div class="metric-s">Automated. Zero manual work.</div>
+        <div class="f-metric">
+          <div class="f-metric-l">Follow-up Response Time</div>
+          <div class="f-metric-v w">&lt; 5 min</div>
+          <div class="f-metric-s">Automated. Zero manual work.</div>
         </div>
-        <div class="metric">
-          <div class="metric-l">Call → Close Rate (pre-qualified)</div>
-          <div class="metric-v g">35–50%</div>
-          <div class="metric-s">When funnel correctly pre-qualifies leads</div>
+        <div class="f-metric">
+          <div class="f-metric-l">Call → Close Rate</div>
+          <div class="f-metric-v g">35–50%</div>
+          <div class="f-metric-s">When funnel pre-qualifies correctly</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      AUTOMATION
-══════════════════════════════════════ -->
-<section id="automation">
+══════════════════════ -->
+<section id="automation" class="reveal">
   <div class="container">
     <div class="eyebrow">Automation Workflows</div>
-    <h2 class="section-title">Zero manual work.</h2>
-    <p class="section-sub">Every step that can be automated, is. Here's the standard lead flow from form to follow-up.</p>
+    <h2 class="sec-title">Zero manual work.</h2>
+    <p class="sec-sub">Every step that can be automated, is. Here's the standard lead flow.</p>
 
     <div class="flow">
-      <div class="flow-step">
-        <div class="flow-line"></div>
-        <div class="flow-dot">📥</div>
-        <div class="flow-body">
-          <div class="flow-title">Lead Submits Form</div>
-          <p class="flow-desc">Visitor completes opt-in on landing page. Webhook trigger fires instantly — no manual monitoring.</p>
-          <span class="flow-tool">Netlify Forms / Typeform</span>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-line"></div>
-        <div class="flow-dot">🔀</div>
-        <div class="flow-body">
-          <div class="flow-title">n8n Workflow Triggered</div>
-          <p class="flow-desc">Webhook catches submission. Data is parsed, tagged by source, and routed to the correct pipeline.</p>
-          <span class="flow-tool">n8n · Webhook Node</span>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-line"></div>
-        <div class="flow-dot">📧</div>
-        <div class="flow-body">
-          <div class="flow-title">Welcome Email in 60 Seconds</div>
-          <p class="flow-desc">Lead receives the promised resource, personalized by name and source. Open rate target: 60%+.</p>
-          <span class="flow-tool">ConvertKit / Mailchimp</span>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-line"></div>
-        <div class="flow-dot">🗂️</div>
-        <div class="flow-body">
-          <div class="flow-title">CRM Record Created</div>
-          <p class="flow-desc">Lead added to Notion or HubSpot with full context — source, timestamp, form data, and assigned sequence.</p>
-          <span class="flow-tool">Notion / HubSpot · API</span>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-line"></div>
-        <div class="flow-dot">⏰</div>
-        <div class="flow-body">
-          <div class="flow-title">Timed Nurture Sequence</div>
-          <p class="flow-desc">Emails fire at Day 2, 4, 7, and 14. Each delivers value and moves toward a soft CTA. Unsubscribes handled automatically.</p>
-          <span class="flow-tool">n8n · Wait Node · Email Node</span>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-dot">✅</div>
-        <div class="flow-body">
-          <div class="flow-title">Warm Lead Flagged for Outreach</div>
-          <p class="flow-desc">If lead opens 3+ emails or clicks a CTA, n8n scores them as warm and sends a Slack notification for personal follow-up.</p>
-          <span class="flow-tool">n8n · Slack · Scoring Logic</span>
-        </div>
-      </div>
+      <div class="flow-step"><div class="flow-line"></div><div class="flow-dot">📥</div><div class="flow-body"><div class="flow-title">Lead Submits Form</div><p class="flow-desc">Visitor completes opt-in on landing page. Webhook fires instantly — no manual monitoring required.</p><span class="flow-tool">Netlify Forms / Typeform</span></div></div>
+      <div class="flow-step"><div class="flow-line"></div><div class="flow-dot">🔀</div><div class="flow-body"><div class="flow-title">n8n Workflow Triggered</div><p class="flow-desc">Webhook catches submission. Data is parsed, tagged by source, and routed to the correct pipeline.</p><span class="flow-tool">n8n · Webhook Node</span></div></div>
+      <div class="flow-step"><div class="flow-line"></div><div class="flow-dot">📧</div><div class="flow-body"><div class="flow-title">Welcome Email in 60 Seconds</div><p class="flow-desc">Lead receives the promised resource, personalized by name and source. Open rate target: 60%+.</p><span class="flow-tool">ConvertKit / Mailchimp</span></div></div>
+      <div class="flow-step"><div class="flow-line"></div><div class="flow-dot">🗂️</div><div class="flow-body"><div class="flow-title">CRM Record Created</div><p class="flow-desc">Lead added to Notion or HubSpot with full context — source, timestamp, form data, and assigned sequence.</p><span class="flow-tool">Notion / HubSpot · API</span></div></div>
+      <div class="flow-step"><div class="flow-line"></div><div class="flow-dot">⏰</div><div class="flow-body"><div class="flow-title">Timed Nurture Sequence</div><p class="flow-desc">Emails fire at Day 2, 4, 7, and 14. Each delivers value and moves toward a soft CTA.</p><span class="flow-tool">n8n · Wait Node · Email Node</span></div></div>
+      <div class="flow-step"><div class="flow-dot">✅</div><div class="flow-body"><div class="flow-title">Warm Lead Flagged</div><p class="flow-desc">If lead opens 3+ emails or clicks a CTA, n8n scores them warm and sends a Slack notification for personal follow-up.</p><span class="flow-tool">n8n · Slack · Scoring Logic</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      CHECKLIST
-══════════════════════════════════════ -->
-<section id="checklist" class="alt-bg">
+══════════════════════ -->
+<section id="checklist" class="alt reveal">
   <div class="container">
     <div class="eyebrow">Audit Checklist</div>
-    <h2 class="section-title">Before any system is built.</h2>
-    <p class="section-sub">The 40-point audit I run for every new client. Full version with scoring in the repo.</p>
+    <h2 class="sec-title">Before any system is built.</h2>
+    <p class="sec-sub">The 40-point audit I run for every new client. Full version with scoring in the repo.</p>
 
     <div class="check-grid">
       <div class="check-group">
         <div class="check-group-title">⚡ Performance</div>
         <div class="check-items">
-          <div class="check-item"><div class="check-box"></div>Page load time under 2s on mobile</div>
-          <div class="check-item"><div class="check-box"></div>Lighthouse score 90+ across all categories</div>
-          <div class="check-item"><div class="check-box"></div>Images compressed and served in WebP</div>
+          <div class="check-item"><div class="check-box"></div>Page load under 2s on mobile</div>
+          <div class="check-item"><div class="check-box"></div>Lighthouse score 90+ all categories</div>
+          <div class="check-item"><div class="check-box"></div>Images compressed and in WebP format</div>
           <div class="check-item"><div class="check-box"></div>No render-blocking scripts in head</div>
           <div class="check-item"><div class="check-box"></div>CDN configured for static assets</div>
         </div>
       </div>
       <div class="check-group">
-        <div class="check-group-title">🔍 SEO Foundations</div>
+        <div class="check-group-title">🔍 SEO</div>
         <div class="check-items">
           <div class="check-item"><div class="check-box"></div>Title tags unique and keyword-targeted</div>
           <div class="check-item"><div class="check-box"></div>Meta descriptions under 160 characters</div>
           <div class="check-item"><div class="check-box"></div>Canonical tags correctly implemented</div>
-          <div class="check-item"><div class="check-box"></div>Sitemap submitted to Google Search Console</div>
+          <div class="check-item"><div class="check-box"></div>Sitemap submitted to Search Console</div>
           <div class="check-item"><div class="check-box"></div>Schema markup on key pages</div>
         </div>
       </div>
       <div class="check-group">
         <div class="check-group-title">🎯 Conversion</div>
         <div class="check-items">
-          <div class="check-item"><div class="check-box"></div>Single clear CTA visible above the fold</div>
+          <div class="check-item"><div class="check-box"></div>Clear CTA visible above the fold</div>
           <div class="check-item"><div class="check-box"></div>Contact form functional and tested</div>
-          <div class="check-item"><div class="check-box"></div>Trust signals visible (reviews, logos)</div>
-          <div class="check-item"><div class="check-box"></div>Mobile form UX tested on real device</div>
+          <div class="check-item"><div class="check-box"></div>Trust signals visible on page</div>
+          <div class="check-item"><div class="check-box"></div>Mobile form tested on real device</div>
           <div class="check-item"><div class="check-box"></div>Thank-you page with clear next step</div>
         </div>
       </div>
@@ -1245,7 +1112,7 @@
           <div class="check-item"><div class="check-box"></div>GA4 installed and verified</div>
           <div class="check-item"><div class="check-box"></div>Conversion events configured</div>
           <div class="check-item"><div class="check-box"></div>Meta Pixel installed (if running ads)</div>
-          <div class="check-item"><div class="check-box"></div>UTM parameters on all campaign links</div>
+          <div class="check-item"><div class="check-box"></div>UTM params on all campaign links</div>
           <div class="check-item"><div class="check-box"></div>Monthly reporting dashboard set up</div>
         </div>
       </div>
@@ -1253,107 +1120,93 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      CONTACT
-══════════════════════════════════════ -->
-<section id="contact">
+══════════════════════ -->
+<section id="contact" class="reveal">
   <div class="container">
     <div class="contact-wrap">
 
-      <!-- Left: info -->
-      <div class="contact-info">
+      <div>
         <div class="eyebrow">Contact</div>
-        <h2>Let's build your <em>system.</em></h2>
-        <p>Whether you need a lead generation machine, a faster website, or an automation pipeline — send a message and I'll reply within 24 hours.</p>
+        <h2 class="contact-tagline">Let's build your <em>system.</em></h2>
+        <p class="contact-p">Whether you need a lead generation machine, a faster website, or an automation pipeline — send a message. I reply within 24 hours.</p>
 
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📧</div>
+        <div class="contact-meta">
+          <div class="meta-row">
+            <div class="meta-icon">📧</div>
             <span>Email: <a href="mailto:officialashii72@gmail.com">officialashii72@gmail.com</a></span>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📍</div>
+          <div class="meta-row">
+            <div class="meta-icon">📍</div>
             <span>Islamabad, Pakistan — available globally</span>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">⚡</div>
+          <div class="meta-row">
+            <div class="meta-icon">⚡</div>
             <span>Response time: usually within 24 hours</span>
           </div>
         </div>
 
         <div class="social-row">
           <a href="https://github.com/ashariftikhar" target="_blank" class="social-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
             GitHub
           </a>
           <a href="https://www.linkedin.com/in/ashariftikharofficial" target="_blank" class="social-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             LinkedIn
           </a>
           <a href="https://x.com/AsharIftikkhar" target="_blank" class="social-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.858L1.696 2.25H8.41l4.265 5.633 5.569-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.858L1.696 2.25H8.41l4.265 5.633 5.569-5.633zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             X / Twitter
           </a>
-          <a href="https://ashariftikhar.vercel.app/" target="_blank" class="social-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19.778h20L12 2z"/></svg>
-            Portfolio
-          </a>
+          <a href="https://ashir-iftikhar.vercel.app/" target="_blank" class="social-btn">🌐 Portfolio</a>
         </div>
       </div>
 
-      <!-- Right: form -->
-      <div class="contact-form-wrap">
+      <!-- FORM — Formspree -->
+      <div class="form-card">
         <div id="formContent">
-          <div class="form-title">Send a message</div>
-          <p class="form-sub">Want to work together? Tell me about your project — I reply fast.</p>
+          <div class="form-head">Send a message</div>
+          <p class="form-sub">Tell me about your project. I reply fast.</p>
 
-          <!-- Netlify form — data-netlify="true" makes it work on GitHub Pages via Netlify -->
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            onsubmit="handleSubmit(event)"
-          >
-            <!-- Netlify hidden field -->
-            <input type="hidden" name="form-name" value="contact"/>
+          <!-- ⚠️ REPLACE YOUR_FORM_ID with your actual Formspree form ID -->
+          <form id="contactForm" action="https://formspree.io/f/xvzbdbyg" method="POST" onsubmit="handleSubmit(event)">
 
-            <!-- Honeypot anti-spam -->
-            <div class="honeypot">
-              <label>Don't fill this out: <input name="bot-field"/></label>
-            </div>
+            <input type="hidden" name="_subject" value="New message from Marketing Systems site"/>
+            <div class="honeypot"><input type="text" name="_gotcha"/></div>
 
-            <div class="form-row">
+            <div class="form-row-2">
               <div class="form-group">
-                <label for="fname">First Name *</label>
-                <input type="text" id="fname" name="first-name" placeholder="Ashar" required/>
+                <label>First Name *</label>
+                <input type="text" name="first-name" placeholder="Ashar" required/>
               </div>
               <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="last-name" placeholder="Iftikhar"/>
+                <label>Last Name</label>
+                <input type="text" name="last-name" placeholder="Iftikhar"/>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+              <label>Email Address *</label>
+              <input type="email" name="email" placeholder="you@example.com" required/>
             </div>
 
             <div class="form-group">
-              <label for="service">What do you need?</label>
-              <select id="service" name="service">
+              <label>What do you need?</label>
+              <select name="service">
                 <option value="" disabled selected>Select a service...</option>
-                <option value="website">Website / Landing Page</option>
-                <option value="automation">AI Automation / Workflows</option>
-                <option value="funnel">Full Funnel System</option>
-                <option value="audit">Website Audit</option>
-                <option value="other">Something else</option>
+                <option>Website / Landing Page</option>
+                <option>AI Automation / Workflows</option>
+                <option>Full Funnel System</option>
+                <option>Website Audit</option>
+                <option>Something else</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="message">Your Message *</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, your goal, and your timeline..." required></textarea>
+              <label>Your Message *</label>
+              <textarea name="message" rows="5" placeholder="Tell me about your project, goal, and timeline..." required></textarea>
             </div>
 
             <button type="submit" class="form-submit" id="submitBtn">
@@ -1362,11 +1215,10 @@
           </form>
         </div>
 
-        <!-- Success state -->
         <div class="form-success" id="formSuccess">
-          <div class="success-icon">✅</div>
+          <div class="s-icon">✅</div>
           <h3>Message sent!</h3>
-          <p>Thank you for reaching out. I'll reply within 24 hours at the email you provided.</p>
+          <p>Thank you for reaching out. I'll reply within 24 hours to the email you provided.</p>
         </div>
       </div>
 
@@ -1374,9 +1226,9 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════
      FOOTER
-══════════════════════════════════════ -->
+══════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -1387,73 +1239,83 @@
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════
-     JS
-══════════════════════════════════════ -->
 <script>
-  /* ── Mobile menu ── */
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-  }
+  /* ── THEME TOGGLE ── */
+  const toggle = document.getElementById('themeToggle');
+  const html   = document.documentElement;
 
-  /* ── Close menu on outside click ── */
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('mobileMenu');
-    const hamburger = document.querySelector('.hamburger');
-    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+  // Load saved preference
+  const saved = localStorage.getItem('theme') || 'dark';
+  html.setAttribute('data-theme', saved);
+  toggle.textContent = saved === 'dark' ? '🌙' : '☀️';
+
+  toggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    toggle.textContent = next === 'dark' ? '🌙' : '☀️';
+    localStorage.setItem('theme', next);
+  });
+
+  /* ── MOBILE MENU ── */
+  function toggleMenu() { document.getElementById('mobMenu').classList.toggle('open'); }
+  function closeMenu()  { document.getElementById('mobMenu').classList.remove('open'); }
+
+  document.addEventListener('click', e => {
+    const menu = document.getElementById('mobMenu');
+    if (!menu.contains(e.target) && !e.target.closest('.hamburger')) {
       menu.classList.remove('open');
     }
   });
 
-  /* ── Netlify form submit handler ── */
+  /* ── FORMSPREE SUBMIT ── */
   async function handleSubmit(e) {
     e.preventDefault();
-
-    const btn = document.getElementById('submitBtn');
+    const btn     = document.getElementById('submitBtn');
     const btnText = document.getElementById('btnText');
-    const form = e.target;
+    const form    = e.target;
 
-    /* Loading state */
-    btn.disabled = true;
+    btn.disabled  = true;
     btnText.textContent = 'Sending...';
 
-    /* Encode form data for Netlify */
-    const data = new FormData(form);
-    const encoded = new URLSearchParams(data).toString();
-
     try {
-      const response = await fetch('/', {
+      const res = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encoded
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
 
-      if (response.ok) {
-        /* Show success */
+      if (res.ok) {
         document.getElementById('formContent').style.display = 'none';
         document.getElementById('formSuccess').classList.add('show');
       } else {
-        throw new Error('Network response was not ok');
+        btnText.textContent = 'Something went wrong — email me directly.';
+        btn.disabled = false;
       }
-    } catch (error) {
-      /* Fallback — still show success (Netlify processes async) */
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
+    } catch {
+      btnText.textContent = 'Network error — please email me directly.';
+      btn.disabled = false;
     }
   }
 
-  /* ── Smooth active nav highlight on scroll ── */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  /* ── SCROLL REVEAL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
 
+  /* ── NAV ACTIVE LINK ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-center a');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
-    });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
     navLinks.forEach(a => {
       a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
     });
